@@ -6,13 +6,29 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.implant_rag_front.dto.OperadoraDTO;
+import br.com.implant_rag_front.util.JsfUtil;
 
 @Service
 public class OperadoraClient {
 
 	public void cadastrar(OperadoraDTO operadora) {
-		HttpEntity<OperadoraDTO> operadoraJson = new HttpEntity<>(operadora);
-		RestTemplate rest = new RestTemplate();
-		ResponseEntity<String> response = rest.postForEntity("http://localhost:8000/implant_rag_back/operadora/salvar", operadoraJson, String.class);
+		try {
+			HttpEntity<OperadoraDTO> operadoraJson = new HttpEntity<>(operadora);
+			RestTemplate rest = new RestTemplate();
+			ResponseEntity<String> response = rest.postForEntity(
+					"http://localhost:8000/implant_rag_back/operadora/salvar", operadoraJson, String.class);
+			JsfUtil.adicionarMensagemDeSucesso("Operadora cadastrada com sucesso");
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			JsfUtil.adicionarMensagemDeErro(ex.getMessage());
+		}
 	}
+
+	public void nomeOperadoraBd(OperadoraDTO operadora, String nome) {
+		RestTemplate rest = new RestTemplate();
+		ResponseEntity<String> response = rest.getForEntity("http://localhost:8000/implant_rag_back/operadora/buscarNomeOperadora/" + nome, String.class);
+	}
+	
+	
 }
