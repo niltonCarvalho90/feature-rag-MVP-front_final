@@ -23,12 +23,5 @@ public class OperadoraClient {
 			ex.printStackTrace();
 			JsfUtil.adicionarMensagemDeErro(ex.getMessage());
 		}
-	}
-
-	public void nomeOperadoraBd(OperadoraDTO operadora, String nome) {
-		RestTemplate rest = new RestTemplate();
-		ResponseEntity<String> response = rest.getForEntity("http://localhost:8000/implant_rag_back/operadora/buscarNomeOperadora/" + nome, String.class);
-	}
-	
-	
+	}	
 }

@@ -15,8 +15,4 @@ public class OperadoraService {
 	public void cadastrar(OperadoraDTO operadora) {
 		this.operadoraClient.cadastrar(operadora);
 	}
-	
-	public void buscarPorNome(OperadoraDTO operadora, String nome) {
-		this.operadoraClient.nomeOperadoraBd(operadora, nome);
-	}
 }

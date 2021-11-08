@@ -43,11 +43,6 @@ public class OperadoraBean {
 	public void cadastrarOperadora() {
 		this.operadoraService.cadastrar(operadora);
 	}
-	
-	public void buscarNomeBD() {
-		this.operadoraService.buscarPorNome(operadora, this.operadora.getNome());
-		
-	}
 
 	public void setOperadoraService(OperadoraService operadoraService) {
 		this.operadoraService = operadoraService;
