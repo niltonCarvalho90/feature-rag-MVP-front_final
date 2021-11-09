@@ -12,16 +12,18 @@ import br.com.implant_rag_front.util.JsfUtil;
 public class OperadoraClient {
 
 	public void cadastrar(OperadoraDTO operadora) {
-		try {
+		
 			HttpEntity<OperadoraDTO> operadoraJson = new HttpEntity<>(operadora);
 			RestTemplate rest = new RestTemplate();
 			ResponseEntity<String> response = rest.postForEntity(
 					"http://localhost:8000/implant_rag_back/operadora/salvar", operadoraJson, String.class);
-			JsfUtil.adicionarMensagemDeSucesso("Operadora cadastrada com sucesso");
 
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			JsfUtil.adicionarMensagemDeErro(ex.getMessage());
-		}
-	}	
-}
+			if(response.hasBody()) {
+				JsfUtil.adicionarMensagemDeSucesso("Operadora cadastrada com sucesso");
+			}else {
+				JsfUtil.adicionarMensagemDeErro("Operadora já cadastrada");
+			}
+			
+		
+		}	
+	}
