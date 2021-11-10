@@ -31,8 +31,5 @@ public class OperadoraDTO {
 	public void setTermo(String termo) {
 		this.termo = termo;
 	}
-
-	
-	
 	
 }

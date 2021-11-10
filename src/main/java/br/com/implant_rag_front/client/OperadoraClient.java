@@ -23,7 +23,6 @@ public class OperadoraClient {
 			}else {
 				JsfUtil.adicionarMensagemDeErro("Operadora já cadastrada");
 			}
-			
 		
 		}	
 	}
