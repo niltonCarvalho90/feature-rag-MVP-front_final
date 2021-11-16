@@ -8,6 +8,7 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.implant_rag_front.dto.UsuarioDTO;
 import br.com.implant_rag_front.service.UsuarioService;
+import br.com.implant_rag_front.util.JsfUtil;
 
 @ManagedBean(name="MBUsuario")
 @ViewScoped
@@ -17,7 +18,7 @@ public class UsuarioBean {
 	
 	private ArrayList<UsuarioDTO> itens;
 	
-	@ManagedProperty(value = "#usuarioService}")
+	@ManagedProperty(value = "#{usuarioService}")
 	private UsuarioService usuarioService;
 	
 	public UsuarioBean() {
@@ -52,5 +53,18 @@ public class UsuarioBean {
 	public void setUsuarioService(UsuarioService usuarioService) {
 		this.usuarioService = usuarioService;
 	}	
+	
+	public String validaLogin( String email, String senha) {
+		
+		if(this.usuarioService.validar( usuario.getEmail(), usuario.getSenha()) == true) {
+			return "cadastroOperadoras.xhtml";
+		}else if( this.usuarioService.validar( usuario.getEmail(), usuario.getSenha()) == false) {
+			JsfUtil.adicionarMensagemDeErro("Email ou senha inválidos");
+		}
+		return null;
+	}
+	public void teste() {
+		System.out.println("KAUA GAY");
+	}
 
 }

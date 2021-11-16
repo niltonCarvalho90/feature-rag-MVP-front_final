@@ -78,7 +78,7 @@
 							<br></br>
 
 							<h:panelGrid columns="2">
-								<p:commandButton value="ENTRAR" update=":formCadastro" />
+								<p:commandButton value="ENTRAR" actionListener="#{MBUsuario.validaLogin}"/>
 								<p:commandButton value="CADASTRAR" update=":formCadastro"  />
 							</h:panelGrid>
 						</h:panelGrid>

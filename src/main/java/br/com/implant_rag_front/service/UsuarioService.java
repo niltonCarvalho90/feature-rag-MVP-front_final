@@ -12,7 +12,7 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioClient usuarioClient;
 
-	public void cadastrar(UsuarioDTO usuario) {
-		this.usuarioClient.logar(usuario);
+	public Boolean validar( String email, String senha) {
+		return this.usuarioClient.logar( email, senha);
 	}
 }
