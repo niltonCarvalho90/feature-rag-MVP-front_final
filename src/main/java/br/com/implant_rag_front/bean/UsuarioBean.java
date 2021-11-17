@@ -54,17 +54,17 @@ public class UsuarioBean {
 		this.usuarioService = usuarioService;
 	}	
 	
-	public String validaLogin( String email, String senha) {
+	public String validaLogin() {
 		
-		if(this.usuarioService.validar( usuario.getEmail(), usuario.getSenha()) == true) {
-			return "cadastroOperadoras.xhtml";
-		}else if( this.usuarioService.validar( usuario.getEmail(), usuario.getSenha()) == false) {
-			JsfUtil.adicionarMensagemDeErro("Email ou senha inválidos");
-		}
+		Boolean validadorLogin = this.usuarioService.validar(  this.usuario.getEmail(), this.usuario.getSenha());
+		
+		if(validadorLogin == true) {
+			JsfUtil.adicionarMensagemDeSucesso("Login realizado com sucesso");
+			return "cadastroOperadoras";
+		}else if(validadorLogin == false  ) {
+			JsfUtil.adicionarMensagemDeErro("Usuário ou senha inválido");		
+}
 		return null;
 	}
-	public void teste() {
-		System.out.println("KAUA GAY");
-	}
-
+	
 }

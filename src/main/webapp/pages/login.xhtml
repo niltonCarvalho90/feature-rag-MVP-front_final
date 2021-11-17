@@ -11,81 +11,54 @@
 		<ui:include src="/includes/menu.xhtml"></ui:include>
 	</ui:define>
 	<ui:define name="conteudo">
+	
 		<style>
-.label {
-	font-size: 18px;
+		
+.imgPrin {
+	float: right;
+	height: 550px;
+	width: 950px;
 }
 
-.div-body {
-	align: center;
+.frmLog{
+	margin-left: 80px;
+	margin-right: 70px;
+	padding-bottom: 180px;
+	height: 80px;
 	float: left;
-	width: 100%;
-	height: 800px;
-	background: #e8ebf1;
+	margin-top: 150px;
 }
 
-.div-Login {
-	float: left;
-	background: white;
-	width: 400px;
-	height: 500px;
+.label{
+	font-size: 26px;
+	
 }
 
-.div-imagem {
-	float: left;
-	width: 800px;
-	height: 700px;
-	background-image: url("Boa_Vista.jpg");
-	background-repeat: no-repeat;
-	background-size: 800px 500px;
-}
 
-.div-form {
-	margin-left: 20px;
-}
-
-.input {
-	width: 200px;
-}
 </style>
+		<img src="../resources/imagens/Boa_Vista.jpg" class="imgPrin" />
+		<img src="../resources/imagens/Extrato.png"/>
+		
+		<h:form id="formCadastro" styleClass="frmLog" >
+                        <h:panelGrid>
 
-		<div class="div-body">
+                            <h:outputLabel value="E-mail: " styleClass="label" />
+                            <p:inputText placeholder="Digite seu e-mail"
+                                 styleClass="input" value="#{MBUsuario.usuario.email}" size="28" />
+                            <br></br>
 
-			<div class="div-imagem" />
+                            <h:outputLabel value="Senha: " styleClass="label" />
+                            <p:password placeholder="Digite sua senha"
+                                 styleClass="input" value="#{MBUsuario.usuario.senha}" size="28"/>
+                            <br></br>
 
-			<div class="div-Login">
-				<div class="div-form">
+                            <h:panelGrid columns="2">
+                                <p:commandButton value="ENTRAR" action="#{MBUsuario.validaLogin}" update=":msgGlobal"/>
+                                <p:commandButton value="CADASTRAR" update=":formCadastro"  />
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </h:form>
 
-					<img src="Extrato.png" />
-
-					<h:form id="formCadastro">
-						<h:panelGrid styleClass="painel">
-							<br></br>
-							<br></br>
-							<br></br>
-							<br></br>
-							<br></br>
-							<br></br>
-							<br></br>
-							<h:outputLabel value="Usuário: " styleClass="label" />
-							<p:inputText placeholder="Digite seu usuário"
-								 styleClass="input" />
-							<br></br>
-
-							<h:outputLabel value="Senha: " styleClass="label" />
-							<p:password placeholder="Digite sua senha"
-								 styleClass="input" />
-							<br></br>
-
-							<h:panelGrid columns="2">
-								<p:commandButton value="ENTRAR" actionListener="#{MBUsuario.validaLogin}"/>
-								<p:commandButton value="CADASTRAR" update=":formCadastro"  />
-							</h:panelGrid>
-						</h:panelGrid>
-					</h:form>
-				</div>
-			</div>
-		</div>
-			</ui:define>
+	</ui:define>
 
 </ui:composition>

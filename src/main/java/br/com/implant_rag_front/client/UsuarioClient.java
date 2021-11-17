@@ -8,14 +8,18 @@ import org.springframework.web.client.RestTemplate;
 public class UsuarioClient {
 
 	public Boolean logar( String email, String senha) {
+
+
 		RestTemplate rest = new RestTemplate();
-		ResponseEntity<Boolean> response = rest.getForEntity("http://localhost:8000/implant_rag_back/usuarios/login",  Boolean.class);
-		if(response.getBody() == true) {
+		ResponseEntity<Boolean> response = rest.getForEntity("http://localhost:8000/implant_rag_back/usuarios/login/" + email + "/" + senha,   Boolean.class);
+		
+		if(response.getBody() == true){
 			return true;
 			
-		}else {
+		}else if(response.getBody() == false){
 			return false;
 		}
+		return null;
 	}
 	
 	
