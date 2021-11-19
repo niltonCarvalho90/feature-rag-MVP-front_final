@@ -44,12 +44,15 @@
 
                             <h:outputLabel value="E-mail: " styleClass="label" />
                             <p:inputText placeholder="Digite seu e-mail"
-                                 styleClass="input" value="#{MBUsuario.usuario.email}" size="28" />
+                                 styleClass="input" value="#{MBUsuario.usuario.email}" size="28" 
+                                 required="true"
+								requiredMessage="O e-mail é obrigatório"/>
                             <br></br>
 
                             <h:outputLabel value="Senha: " styleClass="label" />
                             <p:password placeholder="Digite sua senha"
-                                 styleClass="input" value="#{MBUsuario.usuario.senha}" size="28"/>
+                                 styleClass="input" value="#{MBUsuario.usuario.senha}" size="28" 
+                                 required="true" requiredMessage="A senha é obrigatória"/>
                             <br></br>
 
                             <h:panelGrid columns="2">

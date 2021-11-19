@@ -21,6 +21,8 @@ public class UsuarioBean {
 	@ManagedProperty(value = "#{usuarioService}")
 	private UsuarioService usuarioService;
 	
+	
+	
 	public UsuarioBean() {
 		this.usuario = new UsuarioDTO();
 		
@@ -56,15 +58,15 @@ public class UsuarioBean {
 	
 	public String validaLogin() {
 		
-		Boolean validadorLogin = this.usuarioService.validar(  this.usuario.getEmail(), this.usuario.getSenha());
+		Boolean validadorLogin = this.usuarioService.validar(this.usuario.getEmail(), this.usuario.getSenha());
 		
 		if(validadorLogin == true) {
 			JsfUtil.adicionarMensagemDeSucesso("Login realizado com sucesso");
 			return "cadastroOperadoras";
-		}else if(validadorLogin == false  ) {
+		}else if(validadorLogin == false) {
 			JsfUtil.adicionarMensagemDeErro("Usuário ou senha inválido");		
 }
-		return null;
+		return null ;
 	}
 	
 }
