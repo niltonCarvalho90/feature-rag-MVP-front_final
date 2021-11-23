@@ -11,13 +11,31 @@
 		<ui:include src="/includes/menu.xhtml"></ui:include>
 	</ui:define>
 	<ui:define name="conteudo">
-	
-	<h:form id="frmBotOp">
-			<h:panelGrid id="plnOpe">
-				<p:commandButton value="Incluir Operadora"          
+		<h:form id="frmOperList">
+			<p:dataTable id="tblOper" emptyMessage="Nenhum dado encontrado"
+				value="#{MBOperadora.itens}" widgetVar="tblOper"
+				 var="item" paginator="true" rows="10">
+				<f:facet name="header">
+					Listagem de operadoras
+				</f:facet>
+
+				<p:column headerText="Operadora" sortBy="#{item.nome}"
+					filterBy="#{item.nome}">
+					<h:outputText value="#{item.nome}" />
+				</p:column>
+				<p:column headerText="Opções">
+					<p:commandButton icon="ui-icon-trash"
+						oncomplete="PF('dlgExcOper').show();" update=":frmOperList:tblOper">
+						<f:setPropertyActionListener value="#{item}"
+							target="#{MBOperadora.operadora.nome}" />
+					</p:commandButton>
+				</p:column>
+				<f:facet name="footer">
+					<p:commandButton value="Incluir Operadora"          
 					oncomplete="PF('dlgNovaOper').show();">
 				</p:commandButton>
-			</h:panelGrid>
+				</f:facet>
+			</p:dataTable>
 		</h:form>
 		<p:dialog widgetVar="dlgNovaOper" draggable="false" 
 			resizable="false" modal="true" appendTo="@(body)"
@@ -33,13 +51,34 @@
 					<p:commandButton value="Gravar"
 						actionListener="#{MBOperadora.cadastrarOperadora}"
 						oncomplete="verificar(xhr, status, args, 'dlgNovaOper', 'pnlNovaOper') PF('dlgNovaOper').hide();"
-						update=":frmBotOp :msgGlobal" />
+						update=":frmOperList :msgGlobal" />
 					<p:commandButton value="Cancelar"
-						onclick="PF('dlgNovaOper').hide();" update=":frmBotOp"
+						onclick="PF('dlgNovaOper').hide();" update=":frmOperList"
 						process="@this">
 						<p:resetInput target="pnlNovaOper" />	
 					</p:commandButton>
 				</h:panelGrid>
+				<p:dialog widgetVar="dlgExcOper" draggable="false"
+			resizable="false" modal="true" appendTo="@(body)"
+			header="Excluir operadora">
+			<h:form id="frmExcOper">
+				<h:panelGrid id="pnlExcOper" columns="2">
+					<h:outputLabel value="Operadora" />
+					<h:outputText value="#{MBOperadora.operadora.nome}" />
+
+					<h:outputLabel value="Nome da operadora" />
+							<h:outputText value="#{MBOperadora.operadora.nome}" />
+						</h:panelGrid>
+				<h:panelGrid columns="2">
+					<p:commandButton value="Excluir"
+						actionListener="#{MBOperadora.removerOperadora}"
+						oncomplete="PF('dlgExcOper').hide();"
+						update=":frmOperList:tblOper :msgGlobal" />
+					<p:commandButton value="Cancelar" onclick="PF('dlgExcOper').hide();"
+						update=":frmOperList:tblOper" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
 			</h:form>
 		</p:dialog>
 	</ui:define>

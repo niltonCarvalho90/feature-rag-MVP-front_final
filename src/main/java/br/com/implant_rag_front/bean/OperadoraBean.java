@@ -2,6 +2,7 @@ package br.com.implant_rag_front.bean;
 
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -48,4 +49,14 @@ public class OperadoraBean {
 	public void setOperadoraService(OperadoraService operadoraService) {
 		this.operadoraService = operadoraService;
 	}
+	
+	@PostConstruct
+	public void listarOperadoraBean() {
+		itens = new ArrayList<OperadoraDTO>(this.operadoraService.listar());
+	}
+	
+	public void removerOperadora() {
+		
+	}
+	
 }

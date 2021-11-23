@@ -1,5 +1,7 @@
 package br.com.implant_rag_front.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,12 @@ public class OperadoraService {
 
 	public void cadastrar(OperadoraDTO operadora) {
 		this.operadoraClient.cadastrar(operadora);
+	}
+	
+	public List<OperadoraDTO> listar() {
+		
+		return this.operadoraClient.listarOperadora();
+		
+		
 	}
 }
