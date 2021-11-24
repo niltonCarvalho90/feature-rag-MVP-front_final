@@ -3,8 +3,10 @@ package br.com.implant_rag_front.client;
 import java.util.List;
 
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.implant_rag_front.dto.OperadoraDTO;
@@ -35,7 +37,16 @@ public class OperadoraClient {
 		List<OperadoraDTO> operadoras = response.getBody().getOperadoras();
 
 		return operadoras;
-
 	}
+	
+	public void remover(Long id) {
+	
+		/*RestTemplate rest = new RestTemplate();
+		ResponseEntity<?> response = rest.void delete(String url, Object... urlVariables) throws RestClientException {
+	        execute("http://localhost:8000/implant_rag_back/operadora/deletar", HttpMethod.DELETE, null, null, urlVariables);
+*/
+	}
+	
+	
 
 }
