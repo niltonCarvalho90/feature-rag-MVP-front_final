@@ -14,7 +14,7 @@
 		<h:form id="frmOperList">
 			<p:dataTable id="tblOper" emptyMessage="Nenhum dado encontrado"
 				value="#{MBOperadora.itens}" widgetVar="tblOper"
-				 var="item" paginator="true" rows="10">
+				 var="item" paginator="true" rows="30">
 				<f:facet name="header">
 					Listagem de operadoras
 				</f:facet>
@@ -35,7 +35,7 @@
 					</p:commandButton>
 				</p:column>
 				<f:facet name="footer">
-					<p:commandButton value="NOVA OPERADORA"          
+					<p:commandButton value="CADASTRAR"          
 					oncomplete="PF('dlgNovaOper').show();">
 				</p:commandButton>
 				</f:facet>

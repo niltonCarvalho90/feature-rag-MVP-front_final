@@ -44,6 +44,8 @@ public class OperadoraBean {
 	public void cadastrarOperadora() {
 		this.operadoraService.cadastrar(operadora);
 		this.operadora = new OperadoraDTO();
+		
+		listarOperadoraBean();
 	}
 
 	public void setOperadoraService(OperadoraService operadoraService) {
