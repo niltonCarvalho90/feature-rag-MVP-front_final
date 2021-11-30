@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.implant_rag_front.dto.OperadoraDTO;
@@ -38,10 +37,10 @@ public class OperadoraClient {
 		return operadoras;
 	}
 	
-	public void remover(OperadoraDTO operadora) {
-		HttpEntity<OperadoraDTO> operadoraJson = new HttpEntity<>(operadora);
+	public void remover(Long id) {
+		
 		RestTemplate rest = new RestTemplate();
-		ResponseBody = rest.delete("http://localhost:8000/implant_rag_back/operadora/salvar");
+		rest.delete("http://localhost:8000/implant_rag_back/operadora/deletar/" + id);
 		
 	}
 	

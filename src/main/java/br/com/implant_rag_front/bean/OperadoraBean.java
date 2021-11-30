@@ -9,6 +9,7 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.implant_rag_front.dto.OperadoraDTO;
 import br.com.implant_rag_front.service.OperadoraService;
+import br.com.implant_rag_front.util.JsfUtil;
 
 @ManagedBean(name = "MBOperadora")
 @ViewScoped
@@ -58,6 +59,10 @@ public class OperadoraBean {
 	}
 	
 	public void removerOperadora() {
+		this.operadoraService.remover(this.operadora.getId());
+		JsfUtil.adicionarMensagemDeSucesso("Operadora excluida com sucesso");
+		
+		listarOperadoraBean();
 		
 	}
 	

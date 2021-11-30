@@ -21,7 +21,12 @@ public class OperadoraService {
 	public List<OperadoraDTO> listar() {
 		
 		return this.operadoraClient.listarOperadora();
-		
-		
+				
 	}
+	
+	public void remover(Long id) {
+		this.operadoraClient.remover(id);
+	}
+	
+	
 }
