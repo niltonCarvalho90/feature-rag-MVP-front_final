@@ -11,10 +11,20 @@
 		<ui:include src="/includes/menu.xhtml"></ui:include>
 	</ui:define>
 	<ui:define name="conteudo">
+	<style>
+	.dataTable{
+		text-align: center;
+	}
+
+	</style>
 		<h:form id="frmOperList">
 			<p:dataTable id="tblOper" emptyMessage="Nenhum dado encontrado"
 				value="#{MBOperadora.itens}" widgetVar="tblOper" var="item"
-				paginator="true" rows="30">
+				paginator="true" rows="10" styleClass="dataTable"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink}  {PageLinks} {NextPageLink} {RowsPerPageDropdown}"
+                 currentPageReportTemplate="{startRecord}-{endRecord}"
+                 rowsPerPageTemplate="10,20,30,40,50"> 
+                 
 				<f:facet name="header">
 					Listagem de operadoras
 				</f:facet>
@@ -22,10 +32,10 @@
 					<h:outputText value="#{item.id}" />
 				</p:column>
 
-				<p:column headerText="OPERADORA" sortBy="#{item.nome}">
+				<p:column headerText="OPERADORA" sortBy="#{item.nome}" >
 					<h:outputText value="#{item.nome}" />
 				</p:column>
-				<p:column headerText="OPÇÕES">
+				<p:column headerText="OPÇÕES" >
 					<p:commandButton icon="ui-icon-trash"
 						oncomplete="PF('dlgExcOper').show();"
 						update=":frmExcOper:pnlExcOper :msgGlobal">
