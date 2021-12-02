@@ -11,45 +11,62 @@
 		<ui:include src="/includes/menu.xhtml"></ui:include>
 	</ui:define>
 	<ui:define name="conteudo">
-	<style>
-	.dataTable{
-		text-align: center;
-	}
+		<style>
+.dataTable {
+	margin-top: 20px;
+	text-align: center;
+	width: 100%;
+}
 
-	</style>
-		<h:form id="frmOperList">
-			<p:dataTable id="tblOper" emptyMessage="Nenhum dado encontrado"
-				value="#{MBOperadora.itens}" widgetVar="tblOper" var="item"
-				paginator="true" rows="10" styleClass="dataTable"
-				paginatorTemplate="{CurrentPageReport} {FirstPageLink}  {PageLinks} {NextPageLink} {RowsPerPageDropdown}"
-                 currentPageReportTemplate="{startRecord}-{endRecord}"
-                 rowsPerPageTemplate="10,20,30,40,50"> 
-                 
-				<f:facet name="header">
+.divFormTabela {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.frmOperList {
+	width: 80%;
+}
+</style>
+		<div class="divFormTabela">
+
+			<h:form id="frmOperList" styleClass="frmOperList">
+				<p:dataTable id="tblOper" emptyMessage="Nenhum dado encontrado"
+					value="#{MBOperadora.itens}" widgetVar="tblOper" var="item"
+					paginator="true" rows="10" styleClass="dataTable"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink}  {PageLinks} {NextPageLink} {RowsPerPageDropdown}"
+					currentPageReportTemplate="{startRecord}-{endRecord}"
+					rowsPerPageTemplate="10,20,30,40,50">
+
+					<f:facet name="header">
 					Listagem de operadoras
 				</f:facet>
-				<p:column headerText="ID" sortBy="#{item.id}">
-					<h:outputText value="#{item.id}" />
-				</p:column>
+					<p:column headerText="ID" sortBy="#{item.id}">
+						<h:outputText value="#{item.id}" />
+					</p:column>
 
-				<p:column headerText="OPERADORA" sortBy="#{item.nome}" >
-					<h:outputText value="#{item.nome}" />
-				</p:column>
-				<p:column headerText="OPÇÕES" >
-					<p:commandButton icon="ui-icon-trash"
-						oncomplete="PF('dlgExcOper').show();"
-						update=":frmExcOper:pnlExcOper :msgGlobal">
-						<f:setPropertyActionListener value="#{item}"
-							target="#{MBOperadora.operadora}" />
-					</p:commandButton>
-				</p:column>
-				<f:facet name="footer">
-					<p:commandButton value="CADASTRAR"
-						oncomplete="PF('dlgNovaOper').show();">
-					</p:commandButton>
-				</f:facet>
-			</p:dataTable>
-		</h:form>
+					<p:column headerText="OPERADORA" sortBy="#{item.nome}">
+						<h:outputText value="#{item.nome}" />
+					</p:column>
+					<p:column headerText="OPÇÕES">
+						<p:commandButton icon="ui-icon-trash"
+							oncomplete="PF('dlgExcOper').show();"
+							update=":frmExcOper:pnlExcOper :msgGlobal">
+							<f:setPropertyActionListener value="#{item}"
+								target="#{MBOperadora.operadora}" />
+						</p:commandButton>
+					</p:column>
+					<f:facet name="footer">
+						<p:commandButton value="CADASTRAR"
+							oncomplete="PF('dlgNovaOper').show();">
+						</p:commandButton>
+					</f:facet>
+				</p:dataTable>
+			</h:form>
+		</div>
 		<p:dialog widgetVar="dlgNovaOper" draggable="false" resizable="false"
 			modal="true" appendTo="@(body)" header="Cadastrar Operadora"
 			id="dlgNovaOper">
