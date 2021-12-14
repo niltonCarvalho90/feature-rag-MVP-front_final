@@ -60,7 +60,7 @@ public class UsuarioBean {
 
 		if (validadorLogin == true) {
 			JsfUtil.adicionarMensagemDeSucesso("Login realizado com sucesso");
-			return "cadastroOperadoras";
+			return "index";
 		} else if (validadorLogin == false) {
 			JsfUtil.adicionarMensagemDeErro("Usurio ou senha invlido");
 		}

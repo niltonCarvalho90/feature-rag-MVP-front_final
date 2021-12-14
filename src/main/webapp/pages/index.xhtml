@@ -4,19 +4,121 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    template="/templates/template.xhtml">
-<h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</h:head>
-<h:body>
-		<ui:define name="menu">
-			<ui:include src="/includes/menu.xhtml"></ui:include>
-		</ui:define>
-		<ui:define name="conteudo">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/template.xhtml">
+
+
+	<ui:define name="menuIndex">
+		<ui:include src="/includes/menuIndex.xhtml"></ui:include>
+	</ui:define>
+
+
+	<ui:define name="conteudo">
+
+		<style>
+.backPrin {
+	padding-top: 40px;
+	padding-left: 53px;
+	background: rgb(180, 193, 254);
+	background: rgb(2,0,36);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+	height: 92%;
+	width: 96%;
+	float: center;
+	height: 92%;
+	
+}
+
+.ui-galleria-panel-wrapper {
+	float: center;
+	height: 1000px;
+}
+
+.slideImg {
+	margin-bottom: 200px;
+	margin-left: 500px;
+	float: center;
+	height: 100%;
+	float: center;
+	height: 100%;
+	width: 60%;
+}
+
+.forMenu {
+	font-size: 26px;
+	height: 300px;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+	height: 36px;
+}
+
+.ui-widget-content a {
+	color: blue;
+	font-weight: bolder;
+	font-style: italic;
+}
+
+.frmMenu {
+	float: left;
+}
+</style>
+
+
+
+
+
+		<div class="backPrin">
+			<div>
+			<h:form styleClass="frmMenu">
+    <p:growl>
+        <p:autoUpdate />
+    </p:growl>
+ 
+    <p:panelMenu style="width:300px">
+        <p:submenu label="IMPLANTAÇÃO">
+            <p:menuitem value="Save" action="#{menuView.save}" icon="pi pi-save" />
+            <p:menuitem value="Update" action="#{menuView.update}"  icon="pi pi-refresh" />
+        </p:submenu>
+        <p:submenu label="MEU ACESSO">
+            <p:menuitem value="Delete" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+        </p:submenu>
+  
+    </p:panelMenu>
+</h:form>
 			
-		</ui:define>
-				
-</h:body>
+ 
+
+				<div class="slideImg">
+					<p:galleria effect="slide" effectDuration="5">
+						<p:graphicImage
+							value="../resources/imagens/Banners-de-produtos.jpg"
+							title="image1" alt="image1 desc" width="600px" height="400px" />
+						<p:graphicImage
+							value="../resources/imagens/Banners-de-produtos-CARD.jpg"
+							title="Extrato CARD" alt=" image2 desc" width="600px"
+							height="400px" />
+						<p:graphicImage value="../resources/imagens/Banner-Cash.jpg"
+							title="CASH" alt=" image3 desc" width="600px" height="400px" />
+						<p:graphicImage
+							value="../resources/imagens/Banners-de-produtos-COB.jpg"
+							title="COB" alt=" image4 desc" width="600px" height="400px" />
+						<p:graphicImage
+							value="../resources/imagens/Banners-de-produtos-PAG.jpg"
+							title="PAG" alt=" image5 desc" width="600px" height="400px" />
+						<p:graphicImage
+							value="../resources/imagens/Banners-de-produtos-Pix.jpg"
+							title="PIX" alt=" image6 desc" width="600px" height="400px" />
+						<p:graphicImage
+							value="../resources/imagens/Banners-de-produtos-TES.jpg"
+							title="TES" alt=" image7 desc" width="600px" height="400px" />
+					</p:galleria>
+				</div>
+			</div>
+		</div>
+
+	</ui:define>
+
+
 </ui:composition>

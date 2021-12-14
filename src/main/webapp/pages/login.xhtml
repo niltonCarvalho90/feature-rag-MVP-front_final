@@ -7,61 +7,82 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/templates/template.xhtml">
 
-	<ui:define name="menu">
-		<ui:include src="/includes/menu.xhtml"></ui:include>
-	</ui:define>
+	
 	<ui:define name="conteudo">
-	
+
 		<style>
-		
+.labelmsg{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: italic;
+	
+
+}
 .imgPrin {
-	float: right;
-	height: 550px;
-	width: 950px;
+	padding-top: 40px;
+	padding-left: 53px;
+	background-image: url("../resources/imagens/Boa_Vista_5.jpg");
+	background-repeat:no-repeat;
+	height: 92%;
+	width: 96%;
+	float: center;
+	border-radius: 25px;
+  	
+}
+.frmLog {
+	margin-left: 190px;
+	margin-right: 40px;
+	margin-top: 0px;
+	padding-bottom: 90px;
+	padding-top: 30px;
+	width: 240px;
+	height: 130px;
+	float: center;
+	border: 5px groove;
+  	border-radius: 20px;
+  	border-bottom-width: 7px;
+  	border-top-width: 7px;
+  	border-left-width: 7px;
+  	border-right-width: 7px;
 }
 
-.frmLog{
-	margin-left: 80px;
-	margin-right: 70px;
-	padding-bottom: 180px;
-	height: 80px;
-	float: left;
-	margin-top: 150px;
+.label {
+	font-size: 18px;
+	font-style: italic;
+	font: Courier New;
 }
-
-.label{
-	font-size: 26px;
+.imput{
+	height: 20px;
 	
 }
-
-
 </style>
-		<img src="../resources/imagens/Boa_Vista.jpg" class="imgPrin" />
-		<img src="../resources/imagens/Extrato.png"/>
-		
-		<h:form id="formCadastro" styleClass="frmLog" >
-                        <h:panelGrid>
+		<div id="divImg" class="imgPrin">
+			
+				<h:form id="formCadastro" styleClass="frmLog">
+					<h:panelGrid>
+					
+						<h:outputLabel value="Login: " styleClass="label" />
+						<p:inputText placeholder="Digite seu e-mail" styleClass="imput"
+							value="#{MBUsuario.usuario.email}" size="28" required="true"
+							requiredMessage="O e-mail  obrigatório" style="imput" />
+							
 
-                            <h:outputLabel value="E-mail: " styleClass="label" />
-                            <p:inputText placeholder="Digite seu e-mail"
-                                 styleClass="input" value="#{MBUsuario.usuario.email}" size="28" 
-                                 required="true"
-								requiredMessage="O e-mail é obrigatório"/>
-                            <br></br>
+						<p:password placeholder="Digite sua senha" styleClass="imput"
+							value="#{MBUsuario.usuario.senha}" size="28" required="true"
+							requiredMessage="A senha  obrigatória" style="imput" />
+						<br></br>
 
-                            <h:outputLabel value="Senha: " styleClass="label" />
-                            <p:password placeholder="Digite sua senha"
-                                 styleClass="input" value="#{MBUsuario.usuario.senha}" size="28" 
-                                 required="true" requiredMessage="A senha é obrigatória"/>
-                            <br></br>
-
-                            <h:panelGrid columns="2">
-                                <p:commandButton value="ENTRAR" action="#{MBUsuario.validaLogin}" update=":msgGlobal"/>
-                                <p:commandButton value="CADASTRAR" update=":formCadastro"  />
-                            </h:panelGrid>
-                        </h:panelGrid>
-                    </h:form>
-
+						<h:panelGrid columns="2">
+							<p:commandButton value="ENTRAR" action="#{MBUsuario.validaLogin}"
+								update=":msgGlobal" />
+							<p:commandButton value="CADASTRAR" update=":formCadastro" />
+						</h:panelGrid>
+						<h:outputLabel value="Ao continuar com o acesso, voc concorda com a nossa poltica de privacidade" styleClass="labelmsg" />
+						
+					</h:panelGrid>
+				</h:form>
+			
+		</div>
 	</ui:define>
 
 </ui:composition>
