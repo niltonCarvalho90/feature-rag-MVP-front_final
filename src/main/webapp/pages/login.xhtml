@@ -7,28 +7,70 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/templates/template.xhtml">
 
-	
+
 	<ui:define name="conteudo">
 
 		<style>
-.labelmsg{
-	font-family:Arial, Helvetica, sans-serif;
+.form-cadastro {
+	float: left;
+	margin-left: 50px;
+	margin-top: 40px;
+}
+
+.inputs {
+	margin-top: 10px;
+	width: 200px;
+}
+
+.label {
+	margin-top: 25px;
+	font-size: 20px;
+}
+
+.painel-buttons {
+	margin-top: 20px;
+}
+
+.img {
+	float: right;
+}
+
+.fieldset {
+	border-size: 30px;
+}
+
+body .ui-button.ui-button-danger.ui-button-flat:enabled:hover, body .ui-splitbutton.ui-button-danger>.ui-button.ui-button-flat:enabled:hover
+	{
+	color: #000;
+}
+
+body .ui-button.ui-button-danger.ui-button-flat, body .ui-splitbutton.ui-button-danger>.ui-button.ui-button-flat
+	{
+	color: #000;
+}
+
+body .ui-button.ui-button-danger.ui-button-flat:enabled:active, body .ui-splitbutton.ui-button-danger>.ui-button.ui-button-flat:enabled:active
+	{
+	color: #000;
+}
+
+.labelmsg {
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 11px;
 	font-style: italic;
-	
-
 }
+
 .imgPrin {
 	padding-top: 40px;
 	padding-left: 53px;
 	background-image: url("../resources/imagens/Boa_Vista_5.jpg");
-	background-repeat:no-repeat;
+	background-repeat: no-repeat;
 	height: 92%;
 	width: 96%;
 	float: center;
 	border-radius: 25px;
-  	
 }
+
 .frmLog {
 	margin-left: 190px;
 	margin-right: 40px;
@@ -39,11 +81,11 @@
 	height: 130px;
 	float: center;
 	border: 5px groove;
-  	border-radius: 20px;
-  	border-bottom-width: 7px;
-  	border-top-width: 7px;
-  	border-left-width: 7px;
-  	border-right-width: 7px;
+	border-radius: 20px;
+	border-bottom-width: 7px;
+	border-top-width: 7px;
+	border-left-width: 7px;
+	border-right-width: 7px;
 }
 
 .label {
@@ -51,37 +93,98 @@
 	font-style: italic;
 	font: Courier New;
 }
-.imput{
+
+.imput {
 	height: 20px;
-	
 }
 </style>
 		<div id="divImg" class="imgPrin">
-			
-				<h:form id="formCadastro" styleClass="frmLog">
-					<h:panelGrid>
-					
-						<h:outputLabel value="Login: " styleClass="label" />
-						<p:inputText placeholder="Digite seu e-mail" styleClass="imput"
-							value="#{MBUsuario.usuario.email}" size="28" required="true"
-							requiredMessage="O e-mail  obrigatório" style="imput" />
-							
 
-						<p:password placeholder="Digite sua senha" styleClass="imput"
-							value="#{MBUsuario.usuario.senha}" size="28" required="true"
-							requiredMessage="A senha  obrigatória" style="imput" />
-						<br></br>
+			<h:form id="formLogin" styleClass="frmLog">
+				<h:panelGrid>
 
-						<h:panelGrid columns="2">
-							<p:commandButton value="ENTRAR" action="#{MBUsuario.validaLogin}"
-								update=":msgGlobal" />
-							<p:commandButton value="CADASTRAR" update=":formCadastro" />
+					<h:outputLabel value="Login: " styleClass="label" />
+					<p:inputText placeholder="Digite seu e-mail" styleClass="imput"
+						value="#{MBUsuario.usuario.email}" size="28" required="true"
+						requiredMessage="O e-mail  obrigatório" style="imput" />
+
+
+					<p:password placeholder="Digite sua senha" styleClass="imput"
+						value="#{MBUsuario.usuario.senha}" size="28" required="true"
+						requiredMessage="A senha  obrigatória" style="imput" />
+					<br></br>
+
+					<h:panelGrid columns="2">
+						<p:commandButton value="ENTRAR" action="#{MBUsuario.validaLogin}"
+							update=":msgGlobal" />
+						<p:commandButton value="CADASTRAR"
+							oncomplete="PF('dialogo-cadastro').show();" />
+					</h:panelGrid>
+					<h:outputLabel
+						value="Ao continuar com o acesso, voc concorda com a nossa poltica de privacidade"
+						styleClass="labelmsg" />
+
+				</h:panelGrid>
+			</h:form>
+
+			<p:dialog styleClass="dialogo-form" header="CADASTRAR USUARIO"
+				widgetVar="dialogo-cadastro" heigth="800" width="1000"
+				closable="true" draggable="false" resizable="false" modal="true"
+				appendTo="@(body)" id="dialogo-cadastro">
+				<h:form id="formCadastro" styleClass="form-cadastro">
+
+
+					<h:panelGrid id="painel-form">
+
+
+						<h:outputLabel value="Nome de usuario: " styleClass="label" />
+						<p:inputText placeholder="Digite seu nome de usuario"
+							value="#{MBUsuario.usuario.nome}" styleClass="inputs"
+							required="true" requiredMessage="O NOME  OBRIGATRIO" />
+
+						<h:outputLabel value="E-mail: " styleClass="label" />
+						<p:inputText placeholder="Digite seu e-mail"
+							value="#{MBUsuario.usuario.email}" styleClass="inputs"
+							required="true" requiredMessage="O E-MAIL  OBRIGATRIO" />
+
+						<h:outputLabel value="Telefone: " styleClass="label" />
+						<p:inputMask placeholder="Digite seu telefone"
+							mask="(99) 99999-9999" value="#{MBUsuario.usuario.telefone}"
+							styleClass="inputs" required="true"
+							requiredMessage="O TELEFONE  OBRIGATRIO" />
+
+						<h:outputLabel value="Senha: " styleClass="label" />
+						<p:password placeholder="Crie uma senha"
+							value="#{MBUsuario.usuario.senha}" styleClass="inputs"
+							feedback="true" weakLabel="Fraca" goodLabel="Mediana"
+							strongLabel="Forte" promptLabel="Coloque a sua senha"
+							toggleMask="true" required="true"
+							requiredMessage="A SENHA  OBRIGATRIA" />
+
+						<h:outputLabel value="Cdigo do cliente: " styleClass="label" />
+						<p:inputText value="#{MBUsuario.usuario.cliente.codigo}"
+							styleClass="inputs" required="true"
+							requiredMessage="O CDIGO DO CLIENTE  OBRIGATRIO"
+							placeholder="Digite o cdigo do cliente" />
+
+
+						<h:panelGrid columns="2" styleClass="painel-buttons">
+
+							<p:commandButton value="SALVAR"
+								action="#{MBUsuario.cadastrarUsuario}"
+								update=":dialogo-cadastro :msgGlobal" process="dialogo-cadastro"
+								oncomplete="if(!args.validationFailed) " />
+							<p:commandButton value="CANCELAR "
+								oncomplete="PF('dialogo-cadastro').hide();" />
 						</h:panelGrid>
-						<h:outputLabel value="Ao continuar com o acesso, voc concorda com a nossa poltica de privacidade" styleClass="labelmsg" />
-						
 					</h:panelGrid>
 				</h:form>
-			
+				<div class="img">
+					<img src="../resources/imagens/BV (2).jpg" />
+				</div>
+
+			</p:dialog>
+
 		</div>
 	</ui:define>
 

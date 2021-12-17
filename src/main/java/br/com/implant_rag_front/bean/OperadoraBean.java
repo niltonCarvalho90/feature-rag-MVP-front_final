@@ -46,7 +46,7 @@ public class OperadoraBean {
 		this.operadoraService.cadastrar(operadora);
 		this.operadora = new OperadoraDTO();
 		
-		listarOperadoraBean();
+		visualizarOperadoras();
 	}
 
 	public void setOperadoraService(OperadoraService operadoraService) {
@@ -54,15 +54,15 @@ public class OperadoraBean {
 	}
 	
 	@PostConstruct
-	public void listarOperadoraBean() {
+	public void visualizarOperadoras() {
 		itens = new ArrayList<OperadoraDTO>(this.operadoraService.listar());
 	}
 	
 	public void removerOperadora() {
 		this.operadoraService.remover(this.operadora.getId());
-		JsfUtil.adicionarMensagemDeSucesso("Operadora excluida com sucesso");
+		JsfUtil.adicionarMensagemDeSucesso("Operadora excluída com sucesso");
 		
-		listarOperadoraBean();
+		visualizarOperadoras();
 		
 	}
 	

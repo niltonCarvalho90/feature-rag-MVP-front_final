@@ -20,7 +20,7 @@ public class OperadoraService {
 	
 	public List<OperadoraDTO> listar() {
 		
-		return this.operadoraClient.listarOperadora();
+		return this.operadoraClient.listar();
 				
 	}
 	

@@ -1,22 +1,21 @@
 package br.com.implant_rag_front.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+
 public class ClienteDTO {
 
 	
-	private Long id;
 	
 	private String nomeEmpresa;
 	
 	private Boolean status;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	
+	private Integer codigo;
+	
+	
+	
 	public String getNomeEmpresa() {
 		return nomeEmpresa;
 	}
@@ -32,6 +31,16 @@ public class ClienteDTO {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
+	
+	
 	
 	
 

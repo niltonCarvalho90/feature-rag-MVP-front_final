@@ -8,7 +8,7 @@
 	template="/templates/template.xhtml">
 
 
-	<ui:define name="menuIndex">
+	<ui:define name="menu">
 		<ui:include src="/includes/menuIndex.xhtml"></ui:include>
 	</ui:define>
 
@@ -78,12 +78,17 @@
  
     <p:panelMenu style="width:300px">
         <p:submenu label="IMPLANTAÇÃO">
-            <p:menuitem value="Save" action="#{menuView.save}" icon="pi pi-save" />
-            <p:menuitem value="Update" action="#{menuView.update}"  icon="pi pi-refresh" />
+            <p:menuitem value="Cadastro operadoras" action="/pages/cadastroOperadoras" icon="pi pi-save" />
+            <p:menuitem value="Cadastro matriz" action="/pages/cadastroCliente"  icon="pi pi-refresh" />
+            
         </p:submenu>
         <p:submenu label="MEU ACESSO">
-            <p:menuitem value="Delete" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
-        </p:submenu>
+            <p:menuitem value="Cadastro filiais" action="/pages/cadastroFiliais" ajax="false" icon="pi pi-times"/>
+            <p:separator/>
+	       </p:submenu>
+	        <p:submenu label="SAIR" >
+	        <p:menuitem value="Sair" action="/pages/login"  ajax="false" icon="ui-icon-arrowthickstop-1-w"/>
+	         </p:submenu>
   
     </p:panelMenu>
 </h:form>

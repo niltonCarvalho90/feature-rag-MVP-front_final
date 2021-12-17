@@ -4,14 +4,365 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/templates/template.xhtml">
-
-	<ui:define name="menu">
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/templates/template.xhtml">
+    
+    <ui:define name="menu">
 		<ui:include src="/includes/menu.xhtml"></ui:include>
 	</ui:define>
-	<ui:define name="conteudo">Cadastrar Filiais</ui:define>
+	<ui:define name="conteudo">
+	<f:event listener="#{MBFilial.carregarCadastro}" type="preRenderView"></f:event>
 	
-	</ui:composition>
-	
-	
+		
+		<style>
+			.inputs{
+				width: 280px;
+				height: 30px;
+				maxlength: 50;
+				margin-top: 5px;
+				margin-bottom: 5px;
+				
+			}
+			
+			.panel-form p{
+				font-size: 15px;
+				font-family: Verdana;
+				text-align: left;
+				margin-left: 38px;
+				
+			}
+			.formCadastroFilial{
+				margin-top: 30px;
+				flex: row;
+				justify-content:center;
+			}
+			.ui-selectmanymenu {
+                width: 400px;
+            }
+			.divBtnFilial{
+				margin-top: 20px;
+				height: 50px;
+				width: 100%;
+				display: flex;
+				justify-content:center;
+			}
+			.btn{
+				height: 30px;
+			}
+			.pnlFormCadastroFilial{
+				width: 100%;
+				height: 150px;
+				
+			}
+			.pnlFormCadastroOperadora{
+				width: 100%;
+				height: 300px;
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+			.tblFiliaisCadastradas{
+				margin-top: 10px;
+				width: 80%;
+			}
+			.pnlFormCadastro{
+				display: flex;
+				justify-content: center;
+			}
+			.inputDataList{
+				width: 200px;
+				height: 25px;
+				margin-top: 5px;
+				margin-bottom: 20px;
+				margin-left: 10px;
+				display: flex;
+				justify-content: left;
+				flex-direction: column;
+				align-items: center;
+			}
+			.pnlBoxOperadoras{
+				width: 500px;
+				display: flex;
+				justify-content: left;
+				flex-direction: column;
+				
+			}
+			.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highligh{
+				background: #77d5f7;
+				color: black;
+			}
+			.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{
+				background: white;
+				color: black;
+			}
+			.headerStyle{
+				font-size: 15px;
+				width: 60px;
+			}
+			.labelTable{
+				font-size: 10px;
+			}
+			.inputsCadastroFilial{
+				width: 100%;
+				display: flex;
+				justify-content: space-evenly;
+				margin-top: 30px;
+			}
+			.tabelaFilialOperadora{
+				width: 50%;
+				margin-left: 10px;
+				border: 0px;
+			}
+			.outputPanelTabela{
+				font-size: 10px;
+				margin-top: 10px;
+				margin-bottom: 10px;
+				font-weight: bold;
+			}
+			.tituloTabela p{
+				text-align: center;
+				font-size: 15px;
+				font-weight: bold;
+			}
+			.pnlMenuSelecao{
+				width: 100%;
+				display: flex;
+				justify-content: space-evenly;
+			}
+			.dataListStyle{
+				height: 200px;
+				margin-top: 5px;
+				
+			}
+			.outputDataList{
+				margin-left: 10px;
+			}
+			.dataListStyle .ui-widget-content{
+				border: 0px;
+			}
+			.pnlBoxOperadoras{
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+			.pnlSelectMany{
+				height: 250px;
+			}
+			.pnlBoxOperadoras p{
+				font-weight: bold;
+			}
+			.divFormTabela{
+				display: flex;
+				justify-content: center;
+				flex-direction: column;
+				align-items: center;
+				width: 100%;
+				margin-top: 10px;
+			}
+			.dataListUploads{
+				margin-top: 10px;
+				width: 80%;
+				align-content: center;
+				align-items: center;
+				
+			}
+			.fileUpload{
+				width: 50%;
+				margin-bottom: 20px;
+				marin-left: 30px;
+			}
+			.dataListUploads .ui-widget-content{
+				border: none;
+				border-color: white;
+				
+			}
+		</style>
+		<center>
+			<div class="div-form-filial">
+			<!-- PAINEL MAIOR -->
+				<p:panelGrid columns="1" id="pnlFormCadastro" styleClass="pnlFormCadastro">
+					<h:form styleClass = "formCadastroFilial" id="idFormCadastroFilial">
+							<p:panelGrid>
+								<p:outputPanel styleClass="panel-form">
+									<p>CADASTRE SUA FILIAL</p>
+								</p:outputPanel>
+							</p:panelGrid>
+							
+
+							<div class="inputsCadastroFilial">
+									<span class="ui-float-label">
+										<p:inputText styleClass="inputs"
+											 	 required="#{MBFilial.requerido}" requiredMessage="APELIDO DA LOJA É UM ITEM OBRIGATRIO!"
+											 	 value="#{MBFilial.filial.apelidoLoja}"
+											 	 />
+										 <p:outputLabel for="@previous" value="APELIDO DA LOJA"/>
+									
+									</span>
+									
+									<span class="ui-float-label">
+										<p:inputText styleClass="inputs"
+											     required="#{MBFilial.requerido}" requiredMessage="RAZÃO SOCIAL É UM ITEM OBRIGATRIO!"
+											     value="#{MBFilial.filial.razaoSocial}"
+											     />
+									 	<p:outputLabel for="@previous" value="RAZÃO SOCIAL"/>
+									</span>
+											     
+									<span class="ui-float-label">
+										<p:inputMask styleClass="inputs"
+												 required="#{MBFilial.requerido}" mask="99.999.999/9999-99"
+												 requiredMessage="CNPJ É UM ITEM OBRIGATRIO!"
+												 value="#{MBFilial.filial.cnpj}"
+												 />
+										<p:outputLabel for="@previous" value="CNPJ"/>
+									</span>
+									
+									<span class="ui-float-label">
+										<p:inputText styleClass="inputs"
+												 required="#{MBFilial.requerido}" 
+												 requiredMessage="CÓDIGO ERP É OBRIGATRIO!"
+												 value="#{MBFilial.filial.codErp}"
+												 />
+												 
+										<p:outputLabel for="@previous" value="CÓDIGO ERP"/>
+									</span>			 
+									
+								</div>
+						
+						
+						<p:panelGrid id="pnlFormCadastroOperadora" styleClass="pnlFormCadastroOperadora"
+									 columns="1" rendered = "#{MBFilial.carregaPainel}">
+									 
+								<p:outputPanel styleClass="panel-form">
+									<p>SELECIONE AS OPERADORAS</p>
+								</p:outputPanel>
+								<p:panelGrid columns="2" id="pnlMenuSelecao" styleClass="pnlMenuSelecao">
+									<p:panelGrid id="pnlSelectMany" styleClass="pnlSelectMany" columns="1">
+										<p:selectManyMenu id="selecao-menu" value="#{MBEstabelecimento.itensSelecionados}" converter="dtoConverter"
+		                         		 	var="op" filter="true" filterMatchMode="contains" showCheckbox="true" style="width:200px;">
+		                         		 	
+								            <f:selectItems value="#{MBOperadora.itens}" var="operadora"
+								            			   itemLabel="#{operadora.nome}" itemValue="#{operadora}" style="height: 300px;"/>
+								          	
+								            <p:column>
+								                <p:outputLabel value="#{op.nome}"/>
+								            </p:column>
+							        	</p:selectManyMenu>
+						        	
+						        	<p:commandButton styleClass="btn" value="Escolher"
+						        					 disabled="#{MBEstabelecimento.desabilitaBotao}"
+						        					 action="#{MBEstabelecimento.escolher}"
+						        					 update=":idFormCadastroFilial :msgGlobal"/>
+						        	
+								  </p:panelGrid>
+									<p:panelGrid rendered="#{MBEstabelecimento.carregaOperadoras}">
+										<div class="pnlBoxOperadoras">
+											<p:outputPanel styleClass="pnlBoxOperadoras">
+												<p>INSIRA O CÓDIGO DAS OPERADORAS</p>
+											</p:outputPanel>
+											<p:dataList styleClass="dataListStyle" value="#{MBEstabelecimento.itens}"
+														var="estabelecimento" type="definition" emptyMessage="Você ainda não escolheu nenhuma operadora. Marque pelo menos uma e aperte em 'escolher'"
+														rows="5" paginator="false">
+														
+												<span class="ui-float-label">
+													<p:inputText styleClass="inputDataList" value="#{estabelecimento.codFilialOperadora}"
+								                			 	 required="true" requiredMessage="O código da operadora é obrigatório!"/>
+								                	<p:outputLabel for="@previous" value="#{estabelecimento.operadora.nome}" styleClass="outputDataList"/>	
+												</span>
+								                
+								            </p:dataList>
+										</div>
+										
+									</p:panelGrid>
+							</p:panelGrid>
+						</p:panelGrid>
+						<div class="divBtnFilial">
+							<p:commandButton styleClass="btn" value="Validar Dados" rendered="#{MBEstabelecimento.carregaValidaDados}"
+											 action="#{MBEstabelecimento.cadastrar}"
+											 update=":msgGlobal"/>
+											 
+								<p:commandButton styleClass="btn" value="Cadastrar operadoras"
+											 	 actionListener = "#{MBFilial.cadastrarFilial}"
+												 update=":idFormCadastroFilial :msgGlobal"
+												 rendered="#{MBFilial.carregaEscolherOperadora}"
+												 
+												 />
+								
+								<p:commandButton styleClass="btn" value="Cadastrar nova filial"
+												 onclick="resetar()"/>
+						</div>
+						
+						<p:separator/>
+						
+						<p:outputPanel styleClass="tituloTabela">
+								 <p>UPLOAD DE TERMOS</p>
+		        		</p:outputPanel>
+		        		
+					    <p:dataList styleClass="dataListUploads" value="#{MBEstabelecimento.operadorasTermos}" var="operadoraTermo"
+					    			emptyMessage="Nenhum termo para fazer upload ainda" type="none">
+					    	
+					    	<p:fileUpload styleClass="fileUpload" label="#{operadoraTermo.nome}" mode="advanced" dragDropSupport="true"
+					    				   allowTypes="/(\.|\/)(pdf)$/" multiple="false" sequential="true" uploadLabel="Enviar" cancelLabel="Cancelar"
+					    				   listener="#{MBEstabelecimento.salvarArquivos}"/>
+					    </p:dataList>
+						
+						 <p:separator style="margin-top: 20px; width: 100%;" />
+						 
+						<div class="divFormTabela">
+							<h:form styleClass="formTabela" id="formTabela">
+								<p:outputPanel styleClass="tituloTabela">
+										 <p>FILIAIS CADASTRADAS</p>
+				        		</p:outputPanel>
+				        		
+							    <p:dataTable id="tabelaFiliaisCadastradas" styleClass="tblFiliaisCadastradas"
+							    			 value="#{MBFilial.itens}" var="filialTB"
+							    			 rows="5" paginator="true"
+							    			 emptyMessage="Ainda não há filiais cadastradas.">
+							    			 
+							    	<p:column style="width:2px">
+							            <p:rowToggler />
+							        </p:column>
+							        <p:column headerText="Apelido da Loja" styleClass="headerStyle">
+							            <p:outputLabel value="#{filialTB.apelidoLoja}" styleClass="labelTable"/>
+							        </p:column>
+							         <p:column headerText="Razão social" styleClass="headerStyle">
+							            <p:outputLabel value="#{filialTB.razaoSocial}" styleClass="labelTable"/>
+							        </p:column>
+							         <p:column headerText="CNPJ" styleClass="headerStyle">
+							            <p:outputLabel value="#{filialTB.cnpj}" styleClass="labelTable"/>
+							        </p:column>
+							        <p:column headerText="CÓDIGO ERP" styleClass="headerStyle">
+							            <p:outputLabel value="#{filialTB.codErp}" styleClass="labelTable"/>
+							        </p:column>
+							        
+							        <p:rowExpansion>
+							        	<div class="divTabelaFilialOperadora">
+							        		<p:outputPanel styleClass="outputPanelTabela">
+												 <p>Operadoras cadastradas nesta filial</p>
+							        		</p:outputPanel>
+							        		<p:dataTable styleClass="tabelaFilialOperadora"
+							        					 widgetVar="tabelaFilialOperadora"
+							        					 value="#{filialTB.estabelecimentos}"
+							        					 var = "est"
+							        					 emptyMessage="Ainda não há operadoras cadastradas nesta filial.">
+							        			
+							        				<p:column headerText="OPERADORA" style="width: 150px; text-align: center;">
+							        					<h:outputText value="#{est.operadora.nome}"/>
+							        				</p:column>
+							        				<p:column headerText="CÓDIGO" style="width: 150px; text-align: center;">
+							        					<h:outputText value="#{est.codFilialOperadora}"/>
+							        				</p:column>
+							        		</p:dataTable>
+							        	</div>
+							        </p:rowExpansion>
+							    </p:dataTable>
+							</h:form>
+						</div>
+					</h:form>
+				</p:panelGrid> <!-- PAINEL MAIOR -->
+			</div>		
+		</center>
+		<script>
+			function resetar(){
+		        window.location.reload();
+		    }
+		</script>
+	</ui:define>
+</ui:composition>

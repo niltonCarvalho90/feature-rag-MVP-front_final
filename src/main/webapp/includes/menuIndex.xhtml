@@ -4,87 +4,100 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
-	
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
 	<style>
-	
-	.logo {
+.logo {
 	height: 26px;
-	}
-	
-	.iconelogin{
-	padding-right:6px;
+}
+
+.iconelogin {
+	padding-right: 6px;
 	height: 28px;
-	}
-	
-	.corDeFundo{
+}
+
+.corDeFundo {
 	margin-top: -5px;
-	background: rgb(2,0,36);
-	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);}
-	
-	.nomeLogado{
-	 text-align: right;
-	 padding-left: 1300px;
-	 padding-top: 100px;
-	 color: white;
-	}
-	
-	.menuBar{
-	background: rgb(2,0,36);
-	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);border: none !important; 
-	font-weight:bolder;	
-	}
-	
-	a:menuitem{
-	font-family:inherit;	
-	font-weight:bold;
-	
-	}
-	
-	.ui-menu .ui-menuitem-link{
-	color:#FFF;
-		font-weight:bold;
-	}
-		
-	a:visited{
-	color:black;
+	background: rgb(2, 0, 36);
+	background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%,
+		rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+}
+
+.nomeLogado {
+	text-align: right;
+	padding-left: 1300px;
+	padding-top: 100px;
+	color: white;
+}
+
+.menuBar {
+	background: rgb(2, 0, 36);
+	background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%,
+		rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+	border: none !important;
+	font-weight: bolder;
+}
+
+a:menuitem {
+	font-family: inherit;
+	font-weight: bold;
+}
+
+.ui-menu .ui-menuitem-link {
+	color: #FFF;
+	font-weight: bold;
+}
+
+a:visited {
+	color: black;
 	font: italic bold 30px arial, sans-serif;
-	}
-	
-	.informacoesLogin{
-	color:black;
+}
+
+.informacoesLogin {
+	color: black;
 	padding-top: 0px;
 	padding-bottom: 0px;
 	margin-bottom: -5px;
-	}
-	
+}
 
-	</style>
-	
-	<h:form>       
-	     <div class="corDeFundo">
-	                                         
-	     <center> <a href="index.xhtml"><img src="../resources/imagens/iconeBoavista.png" class="logo"/></a> </center> 
-	       
-	     </div>    
-	     <div>
-	     
-	     
-		<p:menubar styleClass="menuBar">
+.sair {
+	float: right;
+	margin-bottom: 100px;
+}
+</style>
 
-      
-	       <f:facet name="options">
-	       		<div class="informacoesLogin">
-	       		<h:outputText value="Olá, " style="color:#FFF !important"/>
-	       		<h:outputText value="#{MBUsuario.usuario.email}" />
-	     
-	       		<img src="../resources/imagens/pngaaa.com-1257184.png" class="iconelogin"/>
-           </div>
-            </f:facet>
-            
-		</p:menubar>
-		
-	</div>
+	<h:form>
+		<div class="corDeFundo">
+
+			<center>
+				<a href="index.xhtml"><img
+					src="../resources/imagens/iconeBoavista.png" class="logo" /></a>
+			</center>
+
+		</div>
+		<div>
+
+
+			<p:menubar styleClass="menuBar">
+
+
+				<f:facet name="options">
+					
+					<div class="informacoesLogin">
+						<h:outputText value="Olá, Kauacito " style="color:#FFF !important" />
+						<h:outputText value="#{MBUsuario.usuario.email}" />
+
+						<img src="../resources/imagens/pngaaa.com-1257184.png"
+							class="iconelogin" />
+							 
+					
+					</div>
+
+				</f:facet>
+
+			</p:menubar>
+
+		</div>
 	</h:form>
-		
+
 </ui:composition>

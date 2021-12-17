@@ -7,7 +7,26 @@ public class UsuarioDTO {
 	private String email;
 	private String telefone;
 	private String senha;
+	private Boolean status = true;
+	private ClienteDTO cliente;
+
+	public UsuarioDTO(){
+		this.cliente = new ClienteDTO();
+	}
+
 	
+	public Boolean getStatus() {
+		return status;
+	}
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+	public ClienteDTO getCliente() {
+		return cliente;
+	}
+	public void setCliente(ClienteDTO cliente) {
+		this.cliente = cliente;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -38,11 +57,5 @@ public class UsuarioDTO {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	public UsuarioDTO() {
-		
-	}
-	
-	
 	
 }

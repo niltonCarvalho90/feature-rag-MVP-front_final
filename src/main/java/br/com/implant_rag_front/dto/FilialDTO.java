@@ -1,5 +1,7 @@
 package br.com.implant_rag_front.dto;
 
+import java.util.ArrayList;
+
 public class FilialDTO {
 	
 	private Long id;	
@@ -15,6 +17,8 @@ public class FilialDTO {
 	private EstabelecimentoDTO estabelecimento;
 	
 	private ClienteDTO cliente;
+	
+	private ArrayList<EstabelecimentoDTO> estabelecimentos;
 
 	public FilialDTO() {
 		this.cliente = new ClienteDTO();
@@ -88,6 +92,14 @@ public class FilialDTO {
 
 	public void setCliente(ClienteDTO cliente) {
 		this.cliente = cliente;
+	}
+
+	public ArrayList<EstabelecimentoDTO> getEstabelecimentos() {
+		return estabelecimentos;
+	}
+
+	public void setEstabelecimentos(ArrayList<EstabelecimentoDTO> estabelecimentos) {
+		this.estabelecimentos = estabelecimentos;
 	}
 
 

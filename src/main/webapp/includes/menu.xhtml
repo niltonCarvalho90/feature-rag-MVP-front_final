@@ -73,10 +73,10 @@
 		<p:menubar styleClass="menuBar">
 		
 			
-			 <p:submenu label="Implantação" styleClass="sub">
+			 <p:submenu label="Implantação" styleClass="sub" >
 			 
 				<p:menuitem value="Cadastro Operadora" url="cadastroOperadoras.xhtml" style="color:#000 !important" />           
-          	  	<p:menuitem value="Cadastro Matriz" url="cadastroClientes.xhtml" style="color:#000 !important" />
+          	  	<p:menuitem value="Cadastro Matriz" url="cadastroCliente.xhtml" style="color:#000 !important" />
            	 	<p:separator />
            		<p:menuitem value="Sair" url="login.xhtml" style="color:#000 !important"/>
            		
@@ -84,12 +84,11 @@
         
 	        <p:submenu label="Meu acesso" icon="pi pi-pencil">
 	            <p:menuitem value="Cadastro Filiais" url="cadastroFiliais.xhtml" style="color:#000 !important" />
-	            <p:menuitem value="Upload Termos" url="#" style="color:#000 !important"/>
 	        </p:submenu>
       
 	       <f:facet name="options">
 	       		<div class="informacoesLogin">
-	       		<h:outputText value="Olá, " style="color:#FFF !important"/>
+	       		<h:outputText value="Olá, Kauacito " style="color:#FFF !important"/>
 	       		<h:outputText value="#{MBUsuario.usuario.email}" />
 	     
 	       		<img src="../resources/imagens/pngaaa.com-1257184.png" class="iconelogin"/>

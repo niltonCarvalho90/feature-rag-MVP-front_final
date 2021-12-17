@@ -29,7 +29,7 @@ public class OperadoraClient {
 
 	}
 
-	public List<OperadoraDTO> listarOperadora() {
+	public List<OperadoraDTO> listar() {
 		RestTemplate rest = new RestTemplate();
 		ResponseEntity<OperadoraResponse> response = rest.getForEntity("http://localhost:8000/implant_rag_back/operadora/listar", OperadoraResponse.class);
 		List<OperadoraDTO> operadoras = response.getBody().getOperadoras();
